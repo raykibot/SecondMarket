@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: second_market
+  profiles:
+    active: dev
