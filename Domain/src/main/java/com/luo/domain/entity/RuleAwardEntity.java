@@ -1,21 +1,28 @@
 package com.luo.domain.entity;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.Date;
 
-@Builder
 @Data
-public class StrategyEntity  {
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class RuleAwardEntity {
 
-    private String strategyId;
+    private Integer strategyId;
 
-    private String strategyDesc;
+    private Integer awardId;
 
-    private String ruleModels;
+    private String ruleModel;
+
+    private String ruleValue;
+
+    private String ruleDesc;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;

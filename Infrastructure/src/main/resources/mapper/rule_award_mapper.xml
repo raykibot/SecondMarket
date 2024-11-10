@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luo.infrastructure.dao.IRuleAwardDao">
+
+    <select id="queryRuleAward"  resultType="com.luo.infrastructure.pojo.RuleAward">
+        select rule_value from rule_award where strategy_id = #{strategyId} and rule_model = #{ruleModel}
+    </select>
+    <select id="queryUsername" resultType="java.lang.String">
+        select rule_value from rule_award where rule_model = #{ruleModel};
+    </select>
+    <select id="queryRuleModel" resultType="com.luo.infrastructure.pojo.RuleAward">
+        select rule_model,rule_value from rule_award where strategy_id = #{strategyId} and award_id = #{awardId}
+    </select>
+</mapper>

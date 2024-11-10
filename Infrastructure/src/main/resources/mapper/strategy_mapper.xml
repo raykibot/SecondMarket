@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.luo.infrastructure.dao.IStrategyDao">
+    <update id="updateSurplus">
+        update strategy_award
+        set award_surplus = award_surplus - 1
+        where award_id = #{awardId}  and award_surplus > 0
+    </update>
 
 
     <select id="queryStrategyList" resultType="com.luo.infrastructure.pojo.Strategy">
         select strategy_id, strategy_desc, rule_models, create_time, update_time from strategy
+    </select>
+    <select id="queryStrategyAward" resultType="com.luo.infrastructure.pojo.StrategyAward">
+        select strategy_id,
+               award_id,
+               sort,
+               award_count,
+               award_surplus,
+               rate,
+               award_title,
+               award_subtitle,
+               rule_model,
+               create_time,
+               update_time
+        from strategy_award
+    </select>
+    <select id="queryRuleModels" resultType="java.lang.String">
+        select rule_models from strategy where strategy_id = #{strategyId}
+    </select>
+    <select id="queryAwardSurplus" resultType="java.lang.Integer">
+        select strategy_award.award_surplus from strategy_award where strategy_id = #{strategyId} and award_id = #{awardId}
+    </select>
+    <select id="querySurplus" resultType="com.luo.infrastructure.pojo.StrategyAward">
+        select award_surplus,award_id from strategy_award
     </select>
 </mapper>

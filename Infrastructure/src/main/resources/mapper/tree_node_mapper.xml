@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.luo.infrastructure.dao.ITreeNodeDao">
+
+    <select id="queryTreeId" resultType="java.lang.String">
+        select tree_id from tree where tree_key = #{ruleModel}
+    </select>
+    <select id="queryNodeEntity" resultType="com.luo.infrastructure.pojo.Node">
+        select id,
+               tree_id,
+               node_name,
+               node_value,
+               node_desc,
+               create_time,
+               update_time
+        from tree_node
+        where tree_id = #{treeId}
+          and node_name = #{nodeName}
+    </select>
+    <select id="queryNodeLine" resultType="com.luo.infrastructure.pojo.TreeNodeLine">
+        select node_name_from,node_name_to,node_limit_result,node_line_desc from tree_node_line where tree_id = #{treeId} and node_name_from = #{nodeNameFrom}
+    </select>
+</mapper>
